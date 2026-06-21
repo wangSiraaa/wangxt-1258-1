@@ -11,13 +11,14 @@ import {
   Modal,
   Select,
   NumberInput,
+  TextInput,
   Textarea,
   ActionIcon,
-  notifications,
   Badge,
   Alert,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { notifications } from '@mantine/notifications';
 import { IconPlus, IconCheck, IconX, IconFileInvoice, IconAlertTriangle } from '@tabler/icons-react';
 import { api } from '@/lib/api';
 import { StatusBadge } from '@/components/StatusBadge';

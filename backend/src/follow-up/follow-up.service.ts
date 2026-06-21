@@ -75,9 +75,9 @@ export class FollowUpService {
   async getStatistics(): Promise<any> {
     const [total, pending, completed, needsAssistance] = await Promise.all([
       this.followUpRepository.count(),
-      this.followUpRepository.count({ where: { status: FollowUpStatus.PENDING }),
-      this.followUpRepository.count({ where: { status: FollowUpStatus.COMPLETED }),
-      this.followUpRepository.count({ where: { needsFurtherAction: true }),
+      this.followUpRepository.count({ where: { status: FollowUpStatus.PENDING } }),
+      this.followUpRepository.count({ where: { status: FollowUpStatus.COMPLETED } }),
+      this.followUpRepository.count({ where: { needsFurtherAction: true } }),
     ]);
 
     return {

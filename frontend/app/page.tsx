@@ -16,7 +16,7 @@ import {
 import { api } from '@/lib/api';
 import { StatCard } from '@/components/StatCard';
 import { StatusBadge } from '@/components/StatusBadge';
-import { Statistics, Location, Material, FollowUp, CheckInRecord } from '@/types';
+import { Statistics, Material, FollowUp, CheckInRecord } from '@/types';
 
 export default function DashboardPage() {
   const [stats, setStats] = useState<Statistics>({});
@@ -125,6 +125,7 @@ export default function DashboardPage() {
           icon={<IconMapPin size="1.5rem" />}
           color="green"
           subtitle={`${stats.locations?.full || 0} 个已满员`}
+          href="/locations"
         />
         <StatCard
           title="当前在站"
@@ -132,6 +133,7 @@ export default function DashboardPage() {
           icon={<IconUsers size="1.5rem" />}
           color="blue"
           subtitle={`今日进站 ${stats.checkIns?.todayCheckIns || 0} 人`}
+          href="/checkin"
         />
         <StatCard
           title="物资库存"
@@ -139,13 +141,15 @@ export default function DashboardPage() {
           icon={<IconPackage size="1.5rem" />}
           color="orange"
           subtitle={`${stats.materials?.lowStock || 0} 种低于安全线`}
+          href="/materials"
         />
         <StatCard
-          title="待处理事项"
-          value={(stats.followUps?.pending || 0) + (stats.allocations?.pending || 0)}
-          icon={<IconPhoneCall size="1.5rem" />}
+          title="重点人群"
+          value={stats.people?.total || 0}
+          icon={<IconClipboardCheck size="1.5rem" />}
           color="red"
-          subtitle={`${stats.replenishments?.pending || 0} 补货单待审批`}
+          subtitle={`高优先级 ${stats.people?.highPriority || 0} 人`}
+          href="/people"
         />
       </SimpleGrid>
 

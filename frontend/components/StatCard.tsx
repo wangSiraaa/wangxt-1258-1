@@ -1,4 +1,5 @@
 import { Paper, Text, SimpleGrid, ThemeIcon } from '@mantine/core';
+import Link from 'next/link';
 
 interface StatCardProps {
   title: string;
@@ -6,11 +7,17 @@ interface StatCardProps {
   icon: React.ReactNode;
   color?: string;
   subtitle?: string;
+  href?: string;
 }
 
-export function StatCard({ title, value, icon, color = 'blue', subtitle }: StatCardProps) {
-  return (
-    <Paper p="md" radius="md" withBorder>
+export function StatCard({ title, value, icon, color = 'blue', subtitle, href }: StatCardProps) {
+  const card = (
+    <Paper
+      p="md"
+      radius="md"
+      withBorder
+      style={href ? { cursor: 'pointer', transition: 'all 0.2s' } : undefined}
+    >
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
         <div>
           <Text c="dimmed" size="xs" tt="uppercase" fw={700}>
@@ -33,4 +40,14 @@ export function StatCard({ title, value, icon, color = 'blue', subtitle }: StatC
       </SimpleGrid>
     </Paper>
   );
+
+  if (href) {
+    return (
+      <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+        {card}
+      </Link>
+    );
+  }
+
+  return card;
 }
