@@ -1,5 +1,5 @@
 import { IsString, IsInt, IsOptional, IsEnum, IsUUID } from 'class-validator';
-import { LocationStatus } from '../entities/location.entity';
+import { LocationStatus } from '../../entities/location.entity';
 
 export class CreateLocationDto {
   @IsString()

@@ -16,8 +16,8 @@ import {
   Badge,
   Progress,
   ActionIcon,
-  notifications,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 import { useForm } from '@mantine/form';
 import { IconPlus, IconEdit, IconTrash, IconMapPin } from '@tabler/icons-react';
 import { api } from '@/lib/api';

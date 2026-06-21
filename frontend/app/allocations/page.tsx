@@ -13,8 +13,8 @@ import {
   NumberInput,
   Textarea,
   ActionIcon,
-  notifications,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 import { useForm } from '@mantine/form';
 import { IconPlus, IconCheck, IconTruck } from '@tabler/icons-react';
 import { api } from '@/lib/api';

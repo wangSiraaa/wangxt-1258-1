@@ -13,10 +13,10 @@ import {
   Textarea,
   Switch,
   ActionIcon,
-  notifications,
   Badge,
   Alert,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 import { useForm } from '@mantine/form';
 import { IconPhoneCall, IconEdit, IconAlertTriangle, IconUser } from '@tabler/icons-react';
 import { api } from '@/lib/api';

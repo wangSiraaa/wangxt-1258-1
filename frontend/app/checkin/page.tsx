@@ -14,9 +14,9 @@ import {
   Switch,
   Alert,
   ActionIcon,
-  notifications,
   Badge,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 import { useForm } from '@mantine/form';
 import {
   IconArrowRight,

@@ -8,6 +8,7 @@ import { AllocationModule } from './allocation/allocation.module';
 import { FollowUpModule } from './follow-up/follow-up.module';
 import { ReplenishmentModule } from './replenishment/replenishment.module';
 import { TasksModule } from './tasks/tasks.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { TasksModule } from './tasks/tasks.module';
     FollowUpModule,
     ReplenishmentModule,
     TasksModule,
+    SeedModule,
   ],
   controllers: [],
   providers: [],
