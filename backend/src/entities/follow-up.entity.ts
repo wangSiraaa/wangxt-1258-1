@@ -16,6 +16,14 @@ export enum FollowUpStatus {
   NEEDS_ASSISTANCE = 'needs_assistance',
 }
 
+export enum ContactResult {
+  ARRIVED_SAFE = 'arrived_safe',
+  NOT_ARRIVED = 'not_arrived',
+  NO_ANSWER = 'no_answer',
+  WRONG_NUMBER = 'wrong_number',
+  OTHER = 'other',
+}
+
 @Entity('follow_ups')
 export class FollowUp {
   @PrimaryGeneratedColumn('uuid')
@@ -42,6 +50,19 @@ export class FollowUp {
 
   @Column({ default: false })
   needsFurtherAction: boolean;
+
+  @Column({ default: false })
+  isDepartureFollowUp: boolean;
+
+  @Column({
+    type: 'enum',
+    enum: ContactResult,
+    nullable: true,
+  })
+  contactResult: ContactResult;
+
+  @Column({ type: 'text', nullable: true })
+  departureRemarks: string;
 
   @ManyToOne(() => Person, (person) => person.followUps)
   @JoinColumn({ name: 'personId' })

@@ -1,5 +1,5 @@
 import { Badge, BadgeProps } from '@mantine/core';
-import { LocationStatus, PersonPriority, CheckInStatus, MaterialCategory, AllocationStatus, FollowUpStatus, ReplenishmentStatus } from '@/types';
+import { LocationStatus, PersonPriority, CheckInStatus, MaterialCategory, AllocationStatus, FollowUpStatus, ReplenishmentStatus, ContactResult } from '@/types';
 
 const statusConfig: Record<string, { color: BadgeProps['color']; label: string }> = {
   [LocationStatus.OPEN]: { color: 'green', label: '开放中' },
@@ -34,6 +34,12 @@ const statusConfig: Record<string, { color: BadgeProps['color']; label: string }
   [ReplenishmentStatus.ORDERED]: { color: 'violet', label: '已下单' },
   [ReplenishmentStatus.RECEIVED]: { color: 'green', label: '已收货' },
   [ReplenishmentStatus.CANCELLED]: { color: 'gray', label: '已取消' },
+
+  [ContactResult.ARRIVED_SAFE]: { color: 'green', label: '确认安全到家' },
+  [ContactResult.NOT_ARRIVED]: { color: 'red', label: '未到家' },
+  [ContactResult.NO_ANSWER]: { color: 'orange', label: '未接听' },
+  [ContactResult.WRONG_NUMBER]: { color: 'gray', label: '号码错误' },
+  [ContactResult.OTHER]: { color: 'blue', label: '其他' },
 };
 
 export function StatusBadge({ status }: { status: string }) {

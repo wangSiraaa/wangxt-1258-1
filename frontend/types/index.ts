@@ -37,6 +37,14 @@ export enum FollowUpStatus {
   NEEDS_ASSISTANCE = 'needs_assistance',
 }
 
+export enum ContactResult {
+  ARRIVED_SAFE = 'arrived_safe',
+  NOT_ARRIVED = 'not_arrived',
+  NO_ANSWER = 'no_answer',
+  WRONG_NUMBER = 'wrong_number',
+  OTHER = 'other',
+}
+
 export enum ReplenishmentStatus {
   PENDING = 'pending',
   APPROVED = 'approved',
@@ -73,6 +81,8 @@ export interface Person {
   emergencyContact?: string;
   emergencyPhone?: string;
   isCurrentlyCheckedIn: boolean;
+  checkInRecords?: CheckInRecord[];
+  followUps?: FollowUp[];
   createdAt: string;
   updatedAt: string;
 }
@@ -128,6 +138,9 @@ export interface FollowUp {
   notes?: string;
   followUpTime?: string;
   needsFurtherAction: boolean;
+  isDepartureFollowUp: boolean;
+  contactResult?: ContactResult;
+  departureRemarks?: string;
   person?: Person;
   checkInRecord?: CheckInRecord;
   createdAt: string;

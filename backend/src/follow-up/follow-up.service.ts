@@ -23,6 +23,7 @@ export class FollowUpService {
       checkInRecordId: checkInRecord.id,
       status: FollowUpStatus.PENDING,
       notes: '离站时未确认，需要回访确认安全',
+      isDepartureFollowUp: true,
     });
     return this.followUpRepository.save(followUp);
   }
@@ -35,6 +36,9 @@ export class FollowUpService {
     }
     if (query?.status) {
       qb.andWhere('followUp.status = :status', { status: query.status });
+    }
+    if (query?.isDepartureFollowUp !== undefined) {
+      qb.andWhere('followUp.isDepartureFollowUp = :isDepartureFollowUp', { isDepartureFollowUp: query.isDepartureFollowUp });
     }
 
     qb.leftJoinAndSelect('followUp.person', 'person')

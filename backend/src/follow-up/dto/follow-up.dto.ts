@@ -1,5 +1,5 @@
 import { IsUUID, IsOptional, IsString, IsEnum, IsBoolean } from 'class-validator';
-import { FollowUpStatus } from '../../entities/follow-up.entity';
+import { FollowUpStatus, ContactResult } from '../../entities/follow-up.entity';
 
 export class CreateFollowUpDto {
   @IsUUID()
@@ -12,6 +12,18 @@ export class CreateFollowUpDto {
   @IsString()
   @IsOptional()
   notes?: string;
+
+  @IsBoolean()
+  @IsOptional()
+  isDepartureFollowUp?: boolean;
+
+  @IsEnum(ContactResult)
+  @IsOptional()
+  contactResult?: ContactResult;
+
+  @IsString()
+  @IsOptional()
+  departureRemarks?: string;
 }
 
 export class UpdateFollowUpDto {
@@ -25,6 +37,14 @@ export class UpdateFollowUpDto {
   @IsBoolean()
   @IsOptional()
   needsFurtherAction?: boolean;
+
+  @IsEnum(ContactResult)
+  @IsOptional()
+  contactResult?: ContactResult;
+
+  @IsString()
+  @IsOptional()
+  departureRemarks?: string;
 }
 
 export class FollowUpQueryDto {
@@ -35,4 +55,8 @@ export class FollowUpQueryDto {
   @IsEnum(FollowUpStatus)
   @IsOptional()
   status?: FollowUpStatus;
+
+  @IsBoolean()
+  @IsOptional()
+  isDepartureFollowUp?: boolean;
 }
